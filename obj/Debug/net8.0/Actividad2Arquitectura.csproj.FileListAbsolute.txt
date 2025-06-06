@@ -116,3 +116,4 @@ C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectur
 C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectura\obj\Debug\net8.0\Actividad2Arquitectura.pdb
 C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectura\obj\Debug\net8.0\Actividad2Arquitectura.genruntimeconfig.cache
 C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectura\obj\Debug\net8.0\ref\Actividad2Arquitectura.dll
+C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectura\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
