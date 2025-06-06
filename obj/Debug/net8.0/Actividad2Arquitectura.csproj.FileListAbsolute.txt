@@ -1,0 +1,7 @@
+C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectura\obj\Debug\net8.0\Actividad2Arquitectura.csproj.AssemblyReference.cache
+C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectura\obj\Debug\net8.0\Actividad2Arquitectura.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectura\obj\Debug\net8.0\Actividad2Arquitectura.AssemblyInfoInputs.cache
+C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectura\obj\Debug\net8.0\Actividad2Arquitectura.AssemblyInfo.cs
+C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectura\obj\Debug\net8.0\Actividad2Arquitectura.csproj.CoreCompileInputs.cache
+C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectura\obj\Debug\net8.0\Actividad2Arquitectura.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Agustin Mites\source\repos\Actividad2Arquitectura\Actividad2Arquitectura\obj\Debug\net8.0\Actividad2Arquitectura.MvcApplicationPartsAssemblyInfo.cache
