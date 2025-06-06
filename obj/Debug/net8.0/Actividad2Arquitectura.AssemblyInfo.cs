@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Actividad2Arquitectura")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+62593ae09515d09087cd0c816048b9007137c69d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Actividad2Arquitectura")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Actividad2Arquitectura")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

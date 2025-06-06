@@ -8,6 +8,6 @@ namespace EnviosExpressAPI.Services
     {
         [OperationContract]
         [FaultContract(typeof(TrackingFault))]
-        Task<GetTrackingStatusResponse> GetTrackingStatus(GetTrackingStatusRequest request);
+        GetTrackingStatusResponse GetTrackingStatus(GetTrackingStatusRequest request);
     }
 }

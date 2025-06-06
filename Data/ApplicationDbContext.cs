@@ -9,8 +9,8 @@ namespace EnviosExpressAPI.Data
         {
         }
 
-        public DbSet<Package> Packages { get; set; }
-        public DbSet<TrackingEvent> TrackingEvents { get; set; }
+        public DbSet<Package> Packages { get; set; } = null!;
+        public DbSet<TrackingEvent> TrackingEvents { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,36 +20,85 @@ namespace EnviosExpressAPI.Data
             modelBuilder.Entity<Package>(entity =>
             {
                 entity.HasKey(e => e.TrackingNumber);
-                entity.Property(e => e.TrackingNumber).HasMaxLength(50);
-                entity.Property(e => e.SenderName).HasMaxLength(200);
-                entity.Property(e => e.ReceiverName).HasMaxLength(200);
-                entity.Property(e => e.Origin).HasMaxLength(100);
-                entity.Property(e => e.Destination).HasMaxLength(100);
-                entity.Property(e => e.Status).HasMaxLength(50);
-                entity.Property(e => e.CurrentLocation).HasMaxLength(100);
-                entity.Property(e => e.Dimensions).HasMaxLength(50);
-                entity.Property(e => e.Weight).HasPrecision(10, 2);
+                entity.Property(e => e.TrackingNumber)
+                    .HasMaxLength(50)
+                    .IsRequired();
+
+                entity.Property(e => e.SenderName)
+                    .HasMaxLength(200)
+                    .IsRequired();
+
+                entity.Property(e => e.ReceiverName)
+                    .HasMaxLength(200)
+                    .IsRequired();
+
+                entity.Property(e => e.Origin)
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+                entity.Property(e => e.Destination)
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .IsRequired();
+
+                entity.Property(e => e.CurrentLocation)
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+                entity.Property(e => e.Dimensions)
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Weight)
+                    .HasPrecision(10, 2)
+                    .IsRequired();
+
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                // Índice para mejorar performance
+                entity.HasIndex(e => e.Status);
             });
 
             // Configuración de TrackingEvent
             modelBuilder.Entity<TrackingEvent>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.TrackingNumber).HasMaxLength(50);
-                entity.Property(e => e.Description).HasMaxLength(500);
-                entity.Property(e => e.Location).HasMaxLength(100);
 
+                entity.Property(e => e.TrackingNumber)
+                    .HasMaxLength(50)
+                    .IsRequired();
+
+                entity.Property(e => e.Description)
+                    .HasMaxLength(500)
+                    .IsRequired();
+
+                entity.Property(e => e.Location)
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+                entity.Property(e => e.Date)
+                    .IsRequired();
+
+                // Configurar la relación con Package
                 entity.HasOne(e => e.Package)
                       .WithMany(p => p.History)
                       .HasForeignKey(e => e.TrackingNumber)
-                      .HasPrincipalKey(p => p.TrackingNumber);
+                      .HasPrincipalKey(p => p.TrackingNumber)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                // Índices para mejorar performance
+                entity.HasIndex(e => e.TrackingNumber);
+                entity.HasIndex(e => e.Date);
             });
 
             // Datos de prueba
             SeedData(modelBuilder);
         }
 
-        private void SeedData(ModelBuilder modelBuilder)
+        private static void SeedData(ModelBuilder modelBuilder)
         {
             // Paquetes de prueba
             modelBuilder.Entity<Package>().HasData(
@@ -64,8 +113,8 @@ namespace EnviosExpressAPI.Data
                     Dimensions = "30x20x15",
                     Status = "En tránsito",
                     CurrentLocation = "Lima - Perú",
-                    EstimatedDeliveryDate = DateTime.Parse("2025-04-15"),
-                    CreatedAt = DateTime.UtcNow
+                    EstimatedDeliveryDate = DateTime.UtcNow.AddDays(3),
+                    CreatedAt = DateTime.UtcNow.AddDays(-2)
                 },
                 new Package
                 {
@@ -78,8 +127,8 @@ namespace EnviosExpressAPI.Data
                     Dimensions = "25x15x10",
                     Status = "Entregado",
                     CurrentLocation = "Guayaquil - Ecuador",
-                    EstimatedDeliveryDate = DateTime.Parse("2025-04-10"),
-                    CreatedAt = DateTime.UtcNow
+                    EstimatedDeliveryDate = DateTime.UtcNow.AddDays(-1),
+                    CreatedAt = DateTime.UtcNow.AddDays(-5)
                 }
             );
 
@@ -89,7 +138,7 @@ namespace EnviosExpressAPI.Data
                 {
                     Id = 1,
                     TrackingNumber = "PE1234567890",
-                    Date = DateTime.Parse("2025-04-05"),
+                    Date = DateTime.UtcNow.AddDays(-2),
                     Description = "Paquete recibido en bodega central",
                     Location = "Lima"
                 },
@@ -97,7 +146,7 @@ namespace EnviosExpressAPI.Data
                 {
                     Id = 2,
                     TrackingNumber = "PE1234567890",
-                    Date = DateTime.Parse("2025-04-07"),
+                    Date = DateTime.UtcNow.AddDays(-1),
                     Description = "Salida hacia destino",
                     Location = "Lima"
                 },
@@ -105,7 +154,7 @@ namespace EnviosExpressAPI.Data
                 {
                     Id = 3,
                     TrackingNumber = "PE0987654321",
-                    Date = DateTime.Parse("2025-04-08"),
+                    Date = DateTime.UtcNow.AddDays(-5),
                     Description = "Paquete recibido en bodega central",
                     Location = "Arequipa"
                 },
@@ -113,7 +162,7 @@ namespace EnviosExpressAPI.Data
                 {
                     Id = 4,
                     TrackingNumber = "PE0987654321",
-                    Date = DateTime.Parse("2025-04-10"),
+                    Date = DateTime.UtcNow.AddDays(-1),
                     Description = "Paquete entregado exitosamente",
                     Location = "Guayaquil"
                 }
