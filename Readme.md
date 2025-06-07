@@ -82,7 +82,7 @@ Esto iniciará:
 
 
 
-### 📊 Datos de Prueba
+### Datos de Prueba
 Datos de prueba precargados:
 | Tracking Number | Estado | Ubicación actual |  
 |--|--|--|
