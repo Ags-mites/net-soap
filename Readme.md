@@ -117,7 +117,7 @@ xml
 #### Usando Postman
 
 1.  Crear nueva solicitud POST
-2.  URL: `http://localhost:5190/TrackingService.asmx`
+2.  URL: `http://localhost:7061/TrackingService.asmx`
 3.  Headers:
     -   `Content-Type: text/xml; charset=utf-8`
 4.  Body - raw XML:
