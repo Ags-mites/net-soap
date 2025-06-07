@@ -67,7 +67,7 @@ docker-compose up -d
 ```
 
 Esto iniciará:
--   API en el puerto `5190`
+-   API en el puerto `7061`
 -   Base de datos PostgreSQL en el puerto `5432`
 -   pgAdmin en el puerto `8080`
 
